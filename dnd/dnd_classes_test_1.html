@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>问卷小游戏</title>
+    <style>
+        #score-reference {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>DND5e职业测试</h1>
+    <h2>仅供娱乐</h2>
+    <form id="survey-form">
+        <fieldset>
+            <legend>做题啦!</legend>
+            <p>1. 你更喜欢下面的哪种水果?</p>
+            <input type="radio" id="q1-a" name="question1" value="4">
+            <label for="q1-a">A. 苹果</label><br>
+            <input type="radio" id="q1-b" name="question1" value="3">
+            <label for="q1-b">B. 梨子</label><br>
+            <input type="radio" id="q1-c" name="question1" value="2">
+            <label for="q1-c">C. 香蕉</label><br>
+            <input type="radio" id="q1-d" name="question1" value="1">
+            <label for="q1-d">D. 榴莲</label><br>
+            <input type="radio" id="q1-e" name="question1" value="0">
+            <label for="q1-d">E. 荔枝</label><br><br>
+
+            <p>2. 你更喜欢下面的哪种蔬菜?</p>
+            <input type="radio" id="q2-a" name="question2" value="4">
+            <label for="q2-a">A. 青菜</label><br>
+            <input type="radio" id="q2-b" name="question2" value="3">
+            <label for="q2-b">B. 茄子</label><br>
+            <input type="radio" id="q2-c" name="question2" value="2">
+            <label for="q2-c">C. 萝卜</label><br>
+            <input type="radio" id="q2-d" name="question2" value="1">
+            <label for="q2-d">D. 西蓝花</label><br>
+            <input type="radio" id="q2-e" name="question2" value="0">
+            <label for="q2-d">E. 西红柿</label><br><br>
+
+            <p>3. 你更喜欢怎么出行?</p>
+            <input type="radio" id="q3-a" name="question3" value="4">
+            <label for="q3-a">A. 私家车</label><br>
+            <input type="radio" id="q3-b" name="question3" value="3">
+            <label for="q3-b">B. 公交车</label><br>
+            <input type="radio" id="q3-c" name="question3" value="2">
+            <label for="q3-c">C. 摩托车</label><br>
+            <input type="radio" id="q3-d" name="question3" value="1">
+            <label for="q3-d">D. 自行车</label><br>
+            <input type="radio" id="q3-e" name="question3" value="0">
+            <label for="q3-e">E. 步行</label><br><br>
+            
+            <p>4. 你更喜欢听怎么样的音乐?</p>
+            <input type="radio" id="q4-a" name="question4" value="4">
+            <label for="q4-a">A. 说唱</label><br>
+            <input type="radio" id="q4-b" name="question4" value="3">
+            <label for="q4-b">B. 摇滚乐</label><br>
+            <input type="radio" id="q4-c" name="question4" value="2">
+            <label for="q4-c">C. 流行乐</label><br>
+            <input type="radio" id="q4-d" name="question4" value="1">
+            <label for="q4-d">D. 电子乐</label><br>
+            <input type="radio" id="q4-e" name="question4" value="0">
+            <label for="q4-e">E. 古典乐</label><br><br>
+            
+            <p>5. 平时你更喜欢穿什么样的衣服?</p>
+            <input type="radio" id="q5-a" name="question5" value="4">
+            <label for="q5-a">A. T恤</label><br>
+            <input type="radio" id="q5-b" name="question5" value="3">
+            <label for="q5-b">B. 运动装</label><br>
+            <input type="radio" id="q5-c" name="question5" value="2">
+            <label for="q5-c">C. 球衫</label><br>
+            <input type="radio" id="q5-d" name="question5" value="1">
+            <label for="q5-d">D. 纽扣衬衫</label><br>
+            <input type="radio" id="q5-e" name="question5" value="0">
+            <label for="q5-e">E. 不穿</label><br><br>
+            
+            <p>6. 无聊的时候你喜欢做什么?</p>
+            <input type="radio" id="q6-a" name="question6" value="4">
+            <label for="q6-a">A. 打游戏</label><br>
+            <input type="radio" id="q6-b" name="question6" value="3">
+            <label for="q6-b">B. 看电视</label><br>
+            <input type="radio" id="q6-c" name="question6" value="2">
+            <label for="q6-c">C. 运动</label><br>
+            <input type="radio" id="q6-d" name="question6" value="1">
+            <label for="q6-d">D. 看书</label><br>
+            <input type="radio" id="q6-e" name="question6" value="0">
+            <label for="q6-e">E. 手工</label><br><br>
+
+            <p>7. 你更喜欢什么样的电影类型?</p>
+            <input type="radio" id="q7-a" name="question7" value="4">
+            <label for="q7-a">A. 动作片</label><br>
+            <input type="radio" id="q7-b" name="question7" value="3">
+            <label for="q7-b">B. 喜剧片</label><br>
+            <input type="radio" id="q7-c" name="question7" value="2">
+            <label for="q7-c">C. 科幻片</label><br>
+            <input type="radio" id="q7-d" name="question7" value="1">
+            <label for="q7-d">D. 恐怖片</label><br>
+            <input type="radio" id="q7-e" name="question7" value="0">
+            <label for="q7-e">E. 爱情片</label><br><br>
+            
+            <p>8. 你更喜欢什么样的宠物?</p>
+            <input type="radio" id="q8-a" name="question8" value="4">
+            <label for="q8-a">A. 狗</label><br>
+            <input type="radio" id="q8-b" name="question8" value="3">
+            <label for="q8-b">B. 猫</label><br>
+            <input type="radio" id="q8-c" name="question8" value="2">
+            <label for="q8-c">C. 鱼</label><br>
+            <input type="radio" id="q8-d" name="question8" value="1">
+            <label for="q8-d">D. 鸟</label><br>
+            <input type="radio" id="q8-e" name="question8" value="0">
+            <label for="q8-e">E. 兔子</label><br><br>
+            
+            <p>9. 你更喜欢什么样的旅行方式?</p>
+            <input type="radio" id="q9-a" name="question9" value="4">
+            <label for="q9-a">A. 自驾游</label><br>
+            <input type="radio" id="q9-b" name="question9" value="3">
+            <label for="q9-b">B. 跟团游</label><br>
+            <input type="radio" id="q9-c" name="question9" value="2">
+            <label for="q9-c">C. 背包游</label><br>
+            <input type="radio" id="q9-d" name="question9" value="1">
+            <label for="q9-d">D. 邮轮游</label><br>
+            <input type="radio" id="q9-e" name="question9" value="0">
+            <label for="q9-e">E. 别墅度假</label><br><br>
+            
+            <p>10. 你更喜欢哪种饮料?</p>
+            <input type="radio" id="q10-a" name="question10" value="4">
+            <label for="q10-a">A. 咖啡</label><br>
+            <input type="radio" id="q10-b" name="question10" value="3">
+            <label for="q10-b">B. 茶</label><br>
+            <input type="radio" id="q10-c" name="question10" value="2">
+            <label for="q10-c">C. 果汁</label><br>
+            <input type="radio" id="q10-d" name="question10" value="1">
+            <label for="q10-d">D. 碳酸饮料</label><br>
+            <input type="radio" id="q10-e" name="question10" value="0">
+            <label for="q10-e">E. 牛奶</label><br><br>
+            
+            <p>11. 你更喜欢哪种颜色?</p>
+            <input type="radio" id="q11-a" name="question11" value="4">
+            <label for="q11-a">A. 红色</label><br>
+            <input type="radio" id="q11-b" name="question11" value="3">
+            <label for="q11-b">B. 蓝色</label><br>
+            <input type="radio" id="q11-c" name="question11" value="2">
+            <label for="q11-c">C. 绿色</label><br>
+            <input type="radio" id="q11-d" name="question11" value="1">
+            <label for="q11-d">D. 黄色</label><br>
+            <input type="radio" id="q11-e" name="question11" value="0">
+            <label for="q11-e">E. 紫色</label><br><br>
+            <!-- 更多问题可以继续添加在这里 -->
+            <fieldset id="score-reference">
+                <legend>得分参考</legend>
+                <label for="name">0~3：德鲁伊</label><br>
+                <label for="name">4~6：野蛮人</label><br>
+                <label for="name">7~9：战士</label><br>
+                <label for="name">10~12：武僧</label><br>
+                <label for="name">13~15：盗贼</label><br>
+                <label for="name">16~18：牧师</label><br>
+                <label for="name">19~21：游侠</label><br>
+                <label for="name">22~24：圣骑士</label><br>
+                <label for="name">25~27：吟游诗人</label><br>
+                <label for="name">28~30：术士</label><br>
+                <label for="name">30~33：邪术师</label><br>
+                <label for="name">34~36：法师</label><br>
+                <label for="name">>36：现代人</label>
+            </fieldset>
+            <button type="submit">提交</button>
+        </form>
+    
+        <div id="results"></div>
+    
+        <script>
+            document.getElementById('survey-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // 阻止表单默认提交行为
+    
+                let totalScore = 0;
+    
+                // 获取所有问题的名称
+                const questionNames = Array.from(new Set(Array.from(document.querySelectorAll('input[type="radio"]')).map(input => input.name)));
+    
+                // 对于每一个问题，找到被选中的选项并累加得分
+                questionNames.forEach(questionName => {
+                    const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                    if (selectedOption) {
+                        totalScore += parseInt(selectedOption.value);
+                    }
+                });
+    
+                // 显示结果
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.textContent = `你的总得分为: ${totalScore}`;
+    
+                // 显示得分参考
+                document.getElementById('score-reference').style.display = 'block';
+            });
+        </script>
+    </body>
+    </html>
