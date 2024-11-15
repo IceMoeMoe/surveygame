@@ -1,45 +1,217 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>测试问卷主页</title>
+    <title>问卷调查中心</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 0 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
             line-height: 1.6;
         }
-        h1 {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        /* 标题样式 */
+        .title {
             text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #4f9;
+            text-shadow: 0 0 15px rgba(68, 255, 153, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(68, 255, 153, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(68, 255, 153, 0.8);
+            }
         }
-        li {
-            margin-bottom: 10px;
+         /* 介绍文字样式 */
+         .intro {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #8f9;
+            font-size: 1.2em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }       
+        /* 问卷分类区域 */
+        .survey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
         }
-        a {
-            color: #007bff;
+        .survey-category {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+        .survey-category:hover {
+            transform: translateY(-5px);
+            background: rgba(68, 255, 153, 0.1);
+            box-shadow: 0 10px 20px rgba(68, 255, 153, 0.2);
+        }
+        .category-title {
+            font-size: 1.5em;
+            color: #4f9;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .category-icon {
+            font-size: 1.2em;
+        }
+        /* 链接样式 */
+        .survey-link {
+            display: block;
+            color: #fff;
             text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
         }
-        a:hover {
-            text-decoration: underline;
+        .survey-link:hover {
+            background: rgba(68, 255, 153, 0.15);
+            padding-left: 20px;
+        }
+        /* Github链接 */
+        .github-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(68, 255, 153, 0.1);
+            color: #4f9;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            margin: 0 auto;
+            width: fit-content;
+            transition: all 0.3s ease;
+        }
+        .github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(68, 255, 153, 0.3);
+        }
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2em;
+            }
+            .intro {
+                font-size: 1em;
+            }
+            .survey-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* 装饰性元素 */
+        .decoration {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #4f9;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.5);
+                opacity: 0.8;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>测试问卷主页</h1>
-    <p>正在完善中，内容不多，别急，真急可以直接github提交</p>
-    <p>下面是当前有的问卷</p>
-    <ul>
-        <li><a href="./dnd/index.html">DND相关</a></li>
-        <li><a href="./daily/index.html">日常娱乐</a></li>
-        <li><a href="./video_game/index.html">电子游戏</a></li>
-        <li><a href="https://github.com/IceMoeMoe/surveygame">项目的github仓库</a></li>
-    </ul>
+    <!-- 装饰性元素 -->
+    <div class="decoration" style="top: 20%; left: 10%"></div>
+    <div class="decoration" style="top: 60%; left: 80%"></div>
+    <div class="decoration" style="top: 80%; left: 30%"></div>
+    <div class="container">
+        <h1 class="title">问卷调查中心</h1>
+        
+        <div class="intro">
+            欢迎来到问卷调查中心！这里收集了各种有趣的测试问卷，帮助你探索自己的性格特点和兴趣爱好。
+            我们正在持续添加新的内容，如果你有好的想法，欢迎在GitHub上提交建议。
+            网站尚在施工中，如果遇到诡异的问题请不要担心，完全是我的问题，别急。
+        </div>
+        <div class="survey-grid">
+            <div class="survey-category">
+                <div class="category-title">
+                    <span class="category-icon">🎲</span>
+                    角色扮演
+                </div>
+                <a href="./dnd/dnd_classes_test_1.html" class="survey-link">D&D职业测试</a>
+            </div>
+            <div class="survey-category">
+                <div class="category-title">
+                    <span class="category-icon">🎮</span>
+                    游戏相关
+                </div>
+                <a href="./video_game/index.html" class="survey-link">游戏类型推荐</a>
+                <a href="./video_game/index.html" class="survey-link">玩家类型测试</a>
+            </div>
+            <div class="survey-category">
+                <div class="category-title">
+                    <span class="category-icon">🌟</span>
+                    日常娱乐
+                </div>
+                <a href="./daily/persona-test1.html" class="survey-link">性格类型测试</a>
+                <a href="./daily/index.html" class="survey-link">兴趣爱好测试</a>
+            </div>
+        </div>
+        <a href="https://github.com/IceMoeMoe/surveygame" class="github-link">
+            <svg height="24" viewBox="0 0 16 16" width="24">
+                <path fill="#4f9" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+            在 GitHub 上查看项目
+        </a>
+    </div>
+    <script>
+        // 添加更多装饰性元素
+        function addDecorations() {
+            for (let i = 0; i < 10; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'decoration';
+                dot.style.top = Math.random() * 100 + '%';
+                dot.style.left = Math.random() * 100 + '%';
+                dot.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(dot);
+            }
+        }
+        addDecorations();
+    </script>
 </body>
 </html>

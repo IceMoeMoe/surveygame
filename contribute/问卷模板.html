@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>性格测试问卷</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        /* 标题样式 */
+        .title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #4f9;
+            text-shadow: 0 0 10px rgba(68, 255, 153, 0.5);
+        }
+        /* 问题样式 */
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .question-title {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #4f9;
+        }
+        /* 选项样式 */
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+        .option {
+            position: relative;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+        .option:hover {
+            background: rgba(68, 255, 153, 0.1);
+            box-shadow: 0 0 10px rgba(68, 255, 153, 0.2);
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        /* 提交按钮 */
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            background: #4f9;
+            border: none;
+            border-radius: 25px;
+            color: #1a1a2e;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(68, 255, 153, 0.4);
+        }
+        /* 结果样式 */
+        .result {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(68, 255, 153, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 标题部分 -->
+        <h1 class="title">性格测试问卷</h1>
+        <!-- 问题部分 -->
+        <form id="questionForm">
+            <!-- 问题1: 单选 -->
+            <div class="question">
+                <div class="question-title">1. 在闲暇时间，你更倾向于：</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="A" data-score="1">
+                        独自一人安静地看书或听音乐
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="B" data-score="2">
+                        和朋友外出социализация
+                    </label>
+                </div>
+            </div>
+            <!-- 问题2: 多选 -->
+            <div class="question">
+                <div class="question-title">2. 以下哪些描述符合你？（多选）</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="checkbox" name="q2" value="A" data-score="1">
+                        做事细心，注重细节
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q2" value="B" data-score="1">
+                        喜欢尝试新事物
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q2" value="C" data-score="1">
+                        善于规划和组织
+                    </label>
+                </div>
+            </div>
+            <!-- 问题3: 单选 -->
+            <div class="question">
+                <div class="question-title">3. 面对困难时，你通常会：</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="A" data-score="1">
+                        仔细分析问题，寻找解决方案
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="B" data-score="2">
+                        寻求他人帮助和建议
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="C" data-score="3">
+                        凭直觉行动
+                    </label>
+                </div>
+            </div>
+            <button type="button" class="submit-btn" onclick="showResult()">提交答案</button>
+        </form>
+        <!-- 结果部分 -->
+        <div id="result" class="result">
+            <!-- 结果内容将由JavaScript动态生成 -->
+        </div>
+    </div>
+    <script>
+        function showResult() {
+            // 检查是否所有单选题都已答
+            const radioGroups = document.querySelectorAll('input[type="radio"]');
+            const radioNames = new Set();
+            radioGroups.forEach(radio => radioNames.add(radio.name));
+            
+            let allRadioCovered = true;
+            radioNames.forEach(name => {
+                if (!document.querySelector(`input[name="${name}"]:checked`)) {
+                    allRadioCovered = false;
+                }
+            });
+            if (!allRadioCovered) {
+                alert('请确保所有单选题都已回答！');
+                return;
+            }
+
+            // 计算得分
+            let totalScore = 0;
+            document.querySelectorAll('input:checked').forEach(input => {
+                totalScore += parseInt(input.dataset.score);
+            });
+
+            // 根据得分生成结果
+            let resultText = '';
+            if (totalScore <= 3) {
+                resultText = '你是一个理性且独立的人，倾向于独自解决问题。';
+            } else if (totalScore <= 6) {
+                resultText = '你是一个平衡的人，既能独立思考也愿意与他人合作。';
+            } else {
+                resultText = '你是一个外向且富有同理心的人，善于与他人交流合作。';
+            }
+
+            // 显示结果
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h2>测试结果</h2>
+                <p>${resultText}</p>
+            `;
+            resultDiv.classList.add('show');
+        }
+    </script>
+</body>
+</html>
